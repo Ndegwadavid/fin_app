@@ -14,6 +14,7 @@ const transporter = nodemailer.createTransport({
   debug: true
 });
 
+// Template for internal staff email
 const generateInternalEmail = (bookingData) => `
   <html>
     <head>
@@ -90,7 +91,118 @@ const generateInternalEmail = (bookingData) => `
   </html>
 `;
 
+// Template for client confirmation email
+const generateClientEmail = (bookingData) => `
+  <html>
+    <head>
+      <style>
+        body { 
+          font-family: Arial, sans-serif; 
+          line-height: 1.6; 
+          color: #333;
+        }
+        .container { 
+          max-width: 600px; 
+          margin: 0 auto; 
+          padding: 20px;
+        }
+        .header { 
+          background: #2563eb; 
+          color: white; 
+          padding: 30px 20px; 
+          text-align: center;
+          border-radius: 8px 8px 0 0;
+        }
+        .booking-details { 
+          background: #f3f4f6; 
+          padding: 20px; 
+          margin: 20px 0;
+          border-radius: 8px;
+        }
+        .contact-info {
+          background: #e8f0fe;
+          padding: 20px;
+          margin: 20px 0;
+          border-radius: 8px;
+        }
+        .important-notes {
+          background: #fff4ed;
+          padding: 20px;
+          margin: 20px 0;
+          border-radius: 8px;
+        }
+        .footer {
+          background: #f8fafc;
+          padding: 20px;
+          text-align: center;
+          border-radius: 0 0 8px 8px;
+          margin-top: 20px;
+        }
+        h2 {
+          color: #2563eb;
+          margin-bottom: 15px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>Appointment Confirmation</h1>
+          <p style="font-size: 1.1em;">Thank you for choosing OptiPlus for your eye care needs!</p>
+        </div>
+
+        <p style="font-size: 1.1em; margin: 20px 0;">Dear ${bookingData.firstName} ${bookingData.lastName},</p>
+        
+        <p>We're delighted to confirm your appointment with OptiPlus. Here are your booking details:</p>
+        
+        <div class="booking-details">
+          <h2>Appointment Details</h2>
+          <p><strong>Booking Reference:</strong> ${bookingData.bookingNumber}</p>
+          <p><strong>Service:</strong> ${bookingData.service}</p>
+          <p><strong>Date:</strong> ${bookingData.date}</p>
+          <p><strong>Time:</strong> ${bookingData.time}</p>
+          <p><strong>Location:</strong> ${bookingData.location}</p>
+        </div>
+
+        <div class="contact-info">
+          <h2>Your Contact Information</h2>
+          <p><strong>Phone:</strong> ${bookingData.phone}</p>
+          <p><strong>Email:</strong> ${bookingData.email}</p>
+          <p style="margin-top: 15px;">Our team will reach out to you through these contact details to confirm your appointment and answer any questions you might have.</p>
+        </div>
+
+        <div class="important-notes">
+          <h2>Important Information</h2>
+          <ul>
+            <li>Please arrive 10 minutes before your scheduled appointment time</li>
+            <li>Remember to bring any current eyewear or prescriptions you have</li>
+            <li>If you need to reschedule, please call us at least 24 hours in advance</li>
+            <li>In case you wear contact lenses, please bring them along</li>
+            <li>The appointment duration may vary based on the type of examination needed</li>
+          </ul>
+        </div>
+
+        <div class="contact-info">
+          <h2>Need to Reach Us?</h2>
+          <p><strong>Phone:</strong> +254 702 220 545 | +254 105 165 560</p>
+          <p><strong>Email:</strong> info@optiplus.co.ke</p>
+          <p><strong>Operating Hours:</strong></p>
+          <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+          <p>Saturday: 9:00 AM - 4:00 PM</p>
+          <p>Closed on Sundays & Public Holidays</p>
+        </div>
+
+        <div class="footer">
+          <p>Thank you for trusting OptiPlus with your eye care needs. We look forward to serving you!</p>
+          <p style="color: #666; font-size: 0.9em;">Please keep this email for your records.</p>
+        </div>
+      </div>
+    </body>
+  </html>
+`;
+
 exports.handler = async (event, context) => {
+  // CORS handling
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
@@ -113,6 +225,17 @@ exports.handler = async (event, context) => {
     const { bookingData } = JSON.parse(event.body);
     console.log('Processing booking:', bookingData);
 
+    // Send email to client
+    await transporter.sendMail({
+      from: '"OptiPlus Appointments" <appointments@optiplus.co.ke>',
+      to: bookingData.email,
+      subject: 'OptiPlus - Your Appointment Confirmation',
+      html: generateClientEmail(bookingData),
+      headers: {
+        'X-Booking-Reference': bookingData.bookingNumber
+      }
+    });
+
     // Send internal record email
     await transporter.sendMail({
       from: '"OptiPlus Booking System" <appointments@optiplus.co.ke>',
@@ -123,21 +246,6 @@ exports.handler = async (event, context) => {
         'X-Booking-Reference': bookingData.bookingNumber,
         'X-Client-Phone': bookingData.phone,
         'X-Appointment-Date': bookingData.date
-      }
-    });
-
-    // Send client confirmation email (your existing email template)
-    const clientEmailContent = `
-      <!-- Your existing client email template -->
-    `;
-
-    await transporter.sendMail({
-      from: '"OptiPlus Appointments" <appointments@optiplus.co.ke>',
-      to: bookingData.email,
-      subject: 'OptiPlus - Your Appointment Confirmation',
-      html: clientEmailContent,
-      headers: {
-        'X-Booking-Reference': bookingData.bookingNumber
       }
     });
 
