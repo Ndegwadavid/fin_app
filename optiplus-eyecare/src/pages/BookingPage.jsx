@@ -105,15 +105,20 @@ const BookingPage = () => {
         time: formData.appointmentTime
       };
   
-      // Call Netlify function to send email
       const response = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ bookingData: emailData }),
       });
   
       if (!response.ok) {
         throw new Error('Failed to send confirmation email');
       }
+  
+      const result = await response.json();
+      console.log('Email sent:', result);
   
       setBookingNumber(generatedBookingNumber);
       setBookingComplete(true);
