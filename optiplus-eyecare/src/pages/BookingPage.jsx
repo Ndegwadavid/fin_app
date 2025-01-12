@@ -196,7 +196,7 @@ const BookingPage = () => {
                 <div className="flex items-center justify-center mb-4">
                   <CheckCircle className="w-8 h-8 text-green-500 mr-2" />
                   <p className="text-xl font-medium text-gray-900">
-                    Thank you for choosing OptiKenya!
+                    Thank you for choosing Optiplus!
                   </p>
                 </div>
                 <p className="text-gray-600">
