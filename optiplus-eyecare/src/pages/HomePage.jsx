@@ -370,54 +370,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      {/* Contact Information Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Location */}
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <MapPin className="w-8 h-8 text-indigo-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Our Locations</h3>
-              <div className="space-y-2 text-gray-600">
-                <p>Moi Avenue Branch</p>
-                <p>Opposite Imenti House – Nacico Chambers</p>
-                <p>Ronald Ngala Street Branch</p>
-                <p>Opposite The Post Office</p>
-              </div>
-            </div>
-
-            {/* Opening Hours */}
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Clock className="w-8 h-8 text-indigo-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Opening Hours</h3>
-              <div className="space-y-2 text-gray-600">
-                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p>Saturday: 9:00 AM - 4:00 PM</p>
-                <p>Sunday: Closed</p>
-                <p>Public Holidays: Closed</p>
-              </div>
-            </div>
-
-            {/* Contact */}
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Phone className="w-8 h-8 text-indigo-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-              <div className="space-y-2 text-gray-600">
-                <p>Phone: +254 702 220 545</p>
-                <p>Phone: +254 105 165 560</p>
-                <p>Email: info@optikenya.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

@@ -40,7 +40,8 @@ const BookingPage = () => {
 
   const locations = [
     "Moi Avenue Branch - Nacico Chambers",
-    "Ronald Ngala Street Branch"
+    "Ronald Ngala Street Branch",
+    "Ridgeways Mall"
   ];
 
   const services = [
@@ -55,7 +56,7 @@ const BookingPage = () => {
       id: 'contact-lens', 
       name: 'Contact Lens Fitting', 
       duration: '30 mins',
-      price: 'KSH 3,500',
+      price: 'FREE',
       description: 'Professional fitting and consultation'
     },
     { 
@@ -69,7 +70,7 @@ const BookingPage = () => {
       id: 'repairs', 
       name: 'Repairs & Adjustments', 
       duration: '20 mins',
-      price: 'From KSH 500',
+      price: 'FREE',
       description: 'Quick repairs and frame adjustments'
     }
   ];

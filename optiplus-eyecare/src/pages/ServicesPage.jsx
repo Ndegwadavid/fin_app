@@ -16,7 +16,9 @@ const ServicesPage = () => {
         "Visual acuity testing",
         "Refraction assessment",
         "Eye pressure measurement",
-        "Digital retinal imaging"
+        "Fitting and dispensing",
+        "Cataract",
+        "Free Blood Pressure Test"
       ],
       color: "bg-blue-50",
       iconColor: "text-blue-600",
@@ -27,10 +29,10 @@ const ServicesPage = () => {
       title: "Preventive Eye Care",
       description: "Regular check-ups and screenings to maintain optimal eye health and prevent potential vision problems.",
       features: [
-        "Glaucoma screening",
         "Macular degeneration testing",
+        "Glaucoma screening",
         "Diabetic eye examinations",
-        "Children's vision tests"
+        "Pediatric vision tests"
       ],
       color: "bg-green-50",
       iconColor: "text-green-600",
@@ -41,8 +43,9 @@ const ServicesPage = () => {
       title: "Vision Correction Solutions",
       description: "Customized vision correction options tailored to your lifestyle and visual needs.",
       features: [
-        "Contact lens fitting",
-        "Prescription eyewear",
+        "FUNDUS checkup",
+        "Bi-Focal Lenses",
+        "Single vision lenses",
         "Specialty contact lenses",
         "Progressive lenses"
       ],
