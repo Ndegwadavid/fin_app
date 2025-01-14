@@ -40,7 +40,8 @@ const BookingPage = () => {
 
   const locations = [
     "Moi Avenue Branch - Nacico Chambers",
-    "Ronald Ngala Street Branch"
+    "Ronald Ngala Street Branch",
+    "Ridgeways Mall"
   ];
 
   const services = [
