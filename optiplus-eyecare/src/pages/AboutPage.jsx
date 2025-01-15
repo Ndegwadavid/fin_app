@@ -69,7 +69,7 @@ const AboutPage = () => {
               Your Trusted Eye Care Partner
             </h1>
             <p className="text-xl mb-8">
-              Providing comprehensive eye care services with a commitment to excellence since (will be replaced with actual year)
+              Providing comprehensive eye care services with a commitment to excellence since 1998
             </p>
           </motion.div>
         </div>
@@ -86,7 +86,7 @@ const AboutPage = () => {
             >
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Founded in (year to be replaced), OptiPlus has been at the forefront of providing exceptional 
+                Founded in 1998, OptiPlus has been at the forefront of providing exceptional 
                 eye care services in Nairobi. Our journey began with a simple mission: to make 
                 quality eye care accessible to everyone.
               </p>
