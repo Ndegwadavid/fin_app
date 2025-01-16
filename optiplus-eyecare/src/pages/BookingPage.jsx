@@ -205,6 +205,36 @@ const BookingPage = () => {
                 </p>
               </div>
 
+              {/* WhatsApp Channel Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="bg-green-50 rounded-xl p-6 text-center"
+              >
+                <a 
+                  href="https://whatsapp.com/channel/0029VaDueVJ1NCrdNqXjwe3B"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-col items-center hover:opacity-90 transition-opacity"
+                >
+                  <div className="bg-green-500 p-3 rounded-full mb-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      className="animate-pulse"
+                    >
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-5h2v2h-2zm0-8h2v6h-2z"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-green-800 mb-2">Join Our WhatsApp Channel</h3>
+                  <p className="text-green-700">Get the latest offers, discounts, and eye care tips!</p>
+                </a>
+              </motion.div>
+
               <div className="bg-gray-50 rounded-xl p-6 space-y-4">
                 <h3 className="font-semibold text-lg mb-4 text-gray-900">
                   Appointment Details:
