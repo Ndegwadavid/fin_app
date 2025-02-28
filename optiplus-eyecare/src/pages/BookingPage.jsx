@@ -78,7 +78,7 @@ const BookingPage = () => {
   const getTimeSlots = (location) => {
     const slots = [];
     let startHour = location === "Ronald Ngala Street Branch" ? 8 : 9;
-    const endHour = 17; // 5 PM
+    const endHour = 17;
 
     for (let hour = startHour; hour < endHour; hour++) {
       slots.push(`${hour.toString().padStart(2, '0')}:00`);
